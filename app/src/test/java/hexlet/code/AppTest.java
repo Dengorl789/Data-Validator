@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import hexlet.code.schemas.StringSchema;
-import hexlet.code.Validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +29,6 @@ public class AppTest {
     }
     @Test
     public void testString4() {
-        schema.required();
         var actual = schema.isValid(5);
         var expected = false;
         Assertions.assertEquals(expected, actual);
@@ -38,13 +36,31 @@ public class AppTest {
     @Test
     public void testString5() {
         schema.required();
+        schema.minLength(4);
         var actual = schema.isValid("Hexlet");
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
-    @Test void testString6() {
-        var actual = schema.contains("hex");
+    @Test
+    public void testString6() {
+        schema.required();
+        schema.minLength(6);
+        var actual = schema.isValid("Hi");
+        var expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testString7() {
+        schema.contains("Hex");
+        var actual = schema.isValid("Hexlet");
         var expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testString8() {
+        schema.contains("what");
+        var actual = schema.isValid("Hello, World!");
+        var expected = false;
         Assertions.assertEquals(expected, actual);
     }
 }
