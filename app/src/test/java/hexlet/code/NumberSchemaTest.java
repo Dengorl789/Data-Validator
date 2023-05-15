@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class NumberSchemaTest {
-    Validator v = new Validator();
-    NumberSchema schema = v.number();
+    private Validator v = new Validator();
+    private NumberSchema schema = v.number();
     @Test
     public void numberTest1() {
         var actual = schema.isValid(null);

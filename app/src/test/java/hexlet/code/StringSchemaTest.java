@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class StringSchemaTest {
-    Validator v = new Validator();
-    StringSchema schema = v.string();
+    private Validator v = new Validator();
+    private StringSchema schema = v.string();
 
     @Test
     public void testString1() {
