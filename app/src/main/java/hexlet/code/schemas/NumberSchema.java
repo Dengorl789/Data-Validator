@@ -4,18 +4,20 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema {
-    public void positive() {
+    public NumberSchema positive() {
         Predicate<Object> posit = (i) -> Integer.class.isInstance(i)
                 && ((int) i > 0)
                 || i == null;
         limitations.put("positive", posit);
+        return this;
     }
 
-    public void range(int start, int end) {
+    public NumberSchema range(int start, int end) {
         this.positive();
         Predicate<Integer> range = (i) -> Objects.nonNull(i)
                 && start <= i
                 && i <= end;
         limitations.put("range", range);
+        return this;
     }
 }

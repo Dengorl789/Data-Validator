@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 
 public class BaseSchema {
     public Map<String, Predicate> limitations = new HashMap<>();
-    private boolean nullIsTrue = true;
     public boolean isValid(Object validatedObject) {
         boolean result;
         for (Map.Entry<String, Predicate> predicateEntry: limitations.entrySet()) {

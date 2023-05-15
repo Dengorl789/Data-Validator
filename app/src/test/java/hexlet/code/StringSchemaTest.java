@@ -10,57 +10,49 @@ public class StringSchemaTest {
 
     @Test
     public void testString1() {
-        var expected = true;
         var actual = schema.isValid("");
+        var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString2() {
-        var expected = true;
         var actual = schema.isValid(null);
+        var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString3() {
-        schema.required();
-        var actual = schema.isValid("");
+        var actual = schema.required().isValid("");
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString4() {
-        schema.required();
-        var actual = schema.isValid(5);
+        var actual = schema.required().isValid(5);
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString5() {
-        schema.required();
-        schema.minLength(4);
-        var actual = schema.isValid("Hexlet");
+        var actual = schema.required().minLength(4).isValid("Hexlet");
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString6() {
-        schema.required();
-        schema.minLength(6);
-        var actual = schema.isValid("Hi");
+        var actual = schema.required().minLength(6).isValid("Hi");
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString7() {
-        schema.contains("Hex");
-        var actual = schema.isValid("Hexlet");
+        var actual = schema.contains("Hex").isValid("Hexlet");
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void testString8() {
-        schema.contains("what");
-        var actual = schema.isValid("Hello, World!");
+        var actual = schema.contains("what").isValid("Hello, World!");
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
