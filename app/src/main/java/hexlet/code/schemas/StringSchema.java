@@ -5,9 +5,9 @@ import java.util.function.Predicate;
 public class StringSchema extends BaseSchema {
     private boolean state = true;
     public void required() {
-        Predicate<String> req = (s) -> Objects.nonNull(s)
-                && !"".equals(s)
-                && String.class.isInstance(s);
+        Predicate<Object> req = (s) -> String.class.isInstance(s)
+                && Objects.nonNull(s)
+                && !"".equals(s);
         limitations.put("required", req);
     }
     public void minLength(int minLength) {
