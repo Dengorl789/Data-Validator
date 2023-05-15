@@ -4,7 +4,7 @@ import hexlet.code.schemas.NumberSchema;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class NumberSchemaTest{
+public class NumberSchemaTest {
     Validator v = new Validator();
     NumberSchema schema = v.number();
     @Test
@@ -51,7 +51,7 @@ public class NumberSchemaTest{
     @Test
     public void numberTest7() {
         schema.positive();
-        schema.range(3,8);
+        schema.range(3, 8);
         var actual = schema.isValid(3);
         var expected = true;
         Assertions.assertEquals(expected, actual);
@@ -59,7 +59,7 @@ public class NumberSchemaTest{
     @Test
     public void numberTest8() {
         schema.positive();
-        schema.range(3,8);
+        schema.range(3, 8);
         var actual = schema.isValid(2);
         var expected = false;
         Assertions.assertEquals(expected, actual);
@@ -67,7 +67,7 @@ public class NumberSchemaTest{
     @Test
     public void numberTest9() {
         schema.positive();
-        schema.range(3,8);
+        schema.range(3, 8);
         var actual = schema.isValid(6);
         var expected = true;
         Assertions.assertEquals(expected, actual);

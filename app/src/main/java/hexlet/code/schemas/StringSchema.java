@@ -1,10 +1,8 @@
 package hexlet.code.schemas;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class StringSchema extends BaseSchema{
+public class StringSchema extends BaseSchema {
     private boolean state = true;
     public void required() {
         Predicate<String> req = (s) -> Objects.nonNull(s)

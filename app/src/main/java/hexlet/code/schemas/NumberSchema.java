@@ -1,10 +1,8 @@
 package hexlet.code.schemas;
 
-
-import java.util.Objects;
 import java.util.function.Predicate;
 
-public class NumberSchema extends BaseSchema{
+public class NumberSchema extends BaseSchema {
     public void positive() {
         Predicate<Integer> posit = (i) -> (i > 0)
                 && Integer.class.isInstance(i);
