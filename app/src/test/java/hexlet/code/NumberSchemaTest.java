@@ -72,4 +72,13 @@ public class NumberSchemaTest {
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void numberTest10() {
+        schema.positive();
+        schema.range(3, 8);
+        var actual = schema.isValid(null);
+        var expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
 }
