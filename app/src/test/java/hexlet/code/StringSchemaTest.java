@@ -4,7 +4,7 @@ import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class AppTest {
+public class StringSchemaTest {
     Validator v = new Validator();
     StringSchema schema = v.string();
 
@@ -29,6 +29,7 @@ public class AppTest {
     }
     @Test
     public void testString4() {
+        schema.required();
         var actual = schema.isValid(5);
         var expected = false;
         Assertions.assertEquals(expected, actual);
