@@ -17,9 +17,13 @@ public class MapSchema extends BaseSchema {
         return this;
     }
     public MapSchema shape(Map<String, BaseSchema> schemas) {
-        for (Map.Entry<String, BaseSchema> schemaEntry: schemas.entrySet()) {
-
-        }
+        Predicate<Object> shape = value -> {
+            return schemas.entrySet().stream().allMatch(e -> {
+                Object v = ((Map) value).get(e.getKey());
+                return e.getValue().isValid(v);
+            });
+        };
+        limitations.put("shape", shape);
         return this;
     }
 }

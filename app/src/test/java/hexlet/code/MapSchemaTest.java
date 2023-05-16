@@ -76,7 +76,8 @@ public class MapSchemaTest {
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
         human1.put("age", 100);
-        var actual = schema.shape(schemas).isValid(human1);
+        schema.shape(schemas);
+        var actual = schema.isValid(human1);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
@@ -86,7 +87,8 @@ public class MapSchemaTest {
         Map<String, Object> human2 = new HashMap<>();
         human2.put("name", "Maya");
         human2.put("age", null);
-        var actual = schema.shape(schemas).isValid(human2);
+        schema.shape(schemas);
+        var actual = schema.isValid(human2);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
@@ -96,8 +98,9 @@ public class MapSchemaTest {
         Map<String, Object> human3 = new HashMap<>();
         human3.put("name", "");
         human3.put("age", null);
-        var actual = schema.shape(schemas).isValid(human3);
-        var expected = true;
+        schema.shape(schemas);
+        var actual = schema.isValid(human3);
+        var expected = false;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -106,8 +109,20 @@ public class MapSchemaTest {
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
         human4.put("age", -5);
-        var actual = schema.shape(schemas).isValid(human4);
-        var expected = true;
+        schema.shape(schemas);
+        var actual = schema.isValid(human4);
+        var expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void mapTest12() {
+        Map<String, Object> human5 = new HashMap<>();
+        human5.put("name", 5);
+        human5.put("age", "Name");
+        schema.shape(schemas);
+        var actual = schema.isValid(human5);
+        var expected = false;
         Assertions.assertEquals(expected, actual);
     }
 }
