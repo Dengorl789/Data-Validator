@@ -11,7 +11,7 @@ public class MapSchema extends BaseSchema {
         limitations.put("required", req);
         return this;
     }
-    public MapSchema sizeOf(int size) {
+    public MapSchema sizeof(int size) {
         Predicate<Map> sizeof = map -> map.size() >= size;
         limitations.put("sizeOf", sizeof);
         return this;

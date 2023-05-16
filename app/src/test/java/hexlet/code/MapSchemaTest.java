@@ -48,7 +48,7 @@ public class MapSchemaTest {
     @Test
     public void mapTest5() {
         Map<String, String> data = Map.of("key1", "value1");
-        var actual = schema.required().sizeOf(2).isValid(data);
+        var actual = schema.required().sizeof(2).isValid(data);
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
@@ -57,7 +57,7 @@ public class MapSchemaTest {
     public void mapTest6() {
         Map<String, String> data = Map.of("key1", "value1",
                                         "key2", "value2");
-        var actual = schema.required().sizeOf(2).isValid(data);
+        var actual = schema.required().sizeof(2).isValid(data);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
