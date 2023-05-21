@@ -12,7 +12,7 @@ import java.util.Map;
 public class MapSchemaTest {
     private Validator v = new Validator();
     private MapSchema schema = v.map();
-    Map<String, BaseSchema> schemas = Map.of(
+    private Map<String, BaseSchema> schemas = Map.of(
             "name", v.string().required(),
             "age", v.number().positive());
 

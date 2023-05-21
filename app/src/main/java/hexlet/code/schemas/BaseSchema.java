@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class BaseSchema {
-    public Map<String, Predicate> limitations = new HashMap<>();
-    public boolean isValid(Object validatedObject) {
+public abstract class BaseSchema {
+    private Map<String, Predicate> limitations = new HashMap<>();
+    public final boolean isValid(Object validatedObject) {
         boolean result;
         for (Map.Entry<String, Predicate> predicateEntry: limitations.entrySet()) {
             result = predicateEntry.getValue().test(validatedObject);
@@ -15,5 +15,8 @@ public class BaseSchema {
             }
         }
         return true;
+    }
+    public final void addLimitation(String name, Predicate predicate) {
+        this.limitations.put(name, predicate);
     }
 }
