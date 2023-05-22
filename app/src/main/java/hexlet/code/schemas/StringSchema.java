@@ -3,7 +3,6 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class StringSchema extends BaseSchema {
-    private boolean state = true;
     public final StringSchema required() {
         Predicate<Object> req = (s) -> String.class.isInstance(s)
                 && Objects.nonNull(s)

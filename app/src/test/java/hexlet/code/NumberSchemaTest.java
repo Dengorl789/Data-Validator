@@ -8,62 +8,74 @@ public class NumberSchemaTest {
     private Validator v = new Validator();
     private NumberSchema schema = v.number();
     @Test
-    public void numberTest1() {
+    public void numberTestValid() {
         var actual = schema.isValid(null);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest2() {
+    public void numberTestRequired1() {
+        var actual = schema.required().isValid(4);
+        var expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void numberTestRequired2() {
+        var actual = schema.required().isValid(null);
+        var expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void numberTestPositive1() {
         var actual = schema.positive().isValid(null);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest3() {
+    public void numberTestPositive2() {
         var actual = schema.positive().isValid(-3);
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest4() {
+    public void numberTestPositive3() {
         var actual = schema.positive().isValid(3);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest5() {
+    public void numberTestPositive4() {
         var actual = schema.positive().isValid("3");
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest6() {
+    public void numberTestPositive5() {
         var actual = schema.positive().isValid(0);
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest7() {
+    public void numberTestRange1() {
         var actual = schema.positive().range(3, 8).isValid(3);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest8() {
+    public void numberTestRange2() {
         var actual = schema.positive().range(3, 8).isValid(2);
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void numberTest9() {
+    public void numberTestRange3() {
         var actual = schema.positive().range(3, 8).isValid(6);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void numberTest10() {
+    public void numberTestRange4() {
         var actual = schema.positive().range(3, 8).isValid(null);
         var expected = false;
         Assertions.assertEquals(expected, actual);

@@ -17,28 +17,28 @@ public class MapSchemaTest {
             "age", v.number().positive());
 
     @Test
-    public void mapTest1() {
+    public void mapTestValid() {
         var actual = schema.isValid(null);
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void mapTest2() {
+    public void mapTestRequired1() {
         var actual = schema.required().isValid(null);
         var expected = false;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void mapTest3() {
+    public void mapTestRequired2() {
         var actual = schema.required().isValid(new HashMap());
         var expected = true;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void mapTest4() {
+    public void mapTestRequired3() {
         Map<String, String> data = Map.of("key1", "value1");
         var actual = schema.required().isValid(data);
         var expected = true;
@@ -46,24 +46,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void mapTest5() {
-        Map<String, String> data = Map.of("key1", "value1");
-        var actual = schema.required().sizeof(2).isValid(data);
-        var expected = false;
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void mapTest6() {
-        Map<String, String> data = Map.of("key1", "value1",
-                                        "key2", "value2");
-        var actual = schema.required().sizeof(2).isValid(data);
-        var expected = true;
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void mapTest7() {
+    public void mapTestRequired4() {
         schema.required();
         List<String> data1 = List.of("value1", "value2");
         var actual = schema.isValid(data1);
@@ -72,7 +55,24 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void mapTest8() {
+    public void mapTestSizeOf1() {
+        Map<String, String> data = Map.of("key1", "value1");
+        var actual = schema.required().sizeof(2).isValid(data);
+        var expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void mapTestSizeOf2() {
+        Map<String, String> data = Map.of("key1", "value1",
+                                        "key2", "value2");
+        var actual = schema.required().sizeof(2).isValid(data);
+        var expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void mapTestShape1() {
         Map<String, Object> human1 = new HashMap<>();
         human1.put("name", "Kolya");
         human1.put("age", 100);
@@ -83,7 +83,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void mapTest9() {
+    public void mapTestShape2() {
         Map<String, Object> human2 = new HashMap<>();
         human2.put("name", "Maya");
         human2.put("age", null);
@@ -94,7 +94,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void mapTest10() {
+    public void mapTestShape3() {
         Map<String, Object> human3 = new HashMap<>();
         human3.put("name", "");
         human3.put("age", null);
@@ -105,7 +105,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void mapTest11() {
+    public void mapTestShape4() {
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "Valya");
         human4.put("age", -5);
@@ -116,7 +116,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void mapTest12() {
+    public void mapTestShape5() {
         Map<String, Object> human5 = new HashMap<>();
         human5.put("name", 5);
         human5.put("age", "Name");
