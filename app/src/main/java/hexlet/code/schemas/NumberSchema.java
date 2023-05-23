@@ -9,6 +9,7 @@ public class NumberSchema extends BaseSchema {
         addLimitation("required", req);
         return this;
     }
+
     public final NumberSchema positive() {
         Predicate<Object> posit = (i) -> Integer.class.isInstance(i)
                 && ((int) i > 0)

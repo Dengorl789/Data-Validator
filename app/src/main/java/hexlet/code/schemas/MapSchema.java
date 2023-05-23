@@ -11,11 +11,13 @@ public class MapSchema extends BaseSchema {
         addLimitation("required", req);
         return this;
     }
+
     public final MapSchema sizeof(int size) {
         Predicate<Map> sizeof = map -> map.size() == size;
         addLimitation("sizeOf", sizeof);
         return this;
     }
+
     public final MapSchema shape(Map<String, BaseSchema> schemas) {
         Predicate<Object> shape = value -> {
             return schemas.entrySet().stream().allMatch(e -> {

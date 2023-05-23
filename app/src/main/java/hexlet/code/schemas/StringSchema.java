@@ -10,18 +10,19 @@ public class StringSchema extends BaseSchema {
         addLimitation("required", req);
         return this;
     }
+
     public final StringSchema minLength(int minLength) {
         this.required();
         Predicate<String> min = (s) -> s.length() >= minLength;
         addLimitation("minLength", min);
         return this;
     }
+
     public final StringSchema contains(String pattern) {
         this.required();
         Predicate<String> cont = (s) -> s.contains(pattern);
         addLimitation("contains", cont);
         return this;
     }
-
 }
 
