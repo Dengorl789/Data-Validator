@@ -16,7 +16,7 @@ public class StringSchemaTest {
     }
 
     @Test
-    public void testStringfinaValid2() {
+    public void testStringValid2() {
         var actual = schema.isValid(null);
         var expected = true;
         Assertions.assertEquals(expected, actual);
