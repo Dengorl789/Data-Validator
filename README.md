@@ -10,11 +10,11 @@ Create sample object of a Validator class, then use methods string(), number() o
 By adding validation checks, you can improve your validator, because all checks are saved during one session.
 For example:
 
-`Validator v = new Validator();`
-`StringSchema schema = v.string();`
+```Validator v = new Validator();`
+StringSchema schema = v.string();
 
-`schema.required().minLength(5).contains("World").isValid("Hello, World!"); //true`
-`schema.isValid("What does the fox say?"); //false because the string has to contain substring "World" from previous check.`
+schema.required().minLength(5).contains("World").isValid("Hello, World!"); //true
+schema.isValid("What does the fox say?"); //false because the string has to contain substring "World" from previous check.```
 
 Also there is a scheme of a nested validation in MapSchema class, so you can validate map values with shape() method.
 For example:
@@ -34,5 +34,5 @@ schema.isValid(user1); // true
 Map<String, Object> user2 = new HashMap<>();
 human4.put("name", "Mary");
 human4.put("age", -5);
-schema.isValid(user2); // false
+schema.isValid(user2); // false```
 
