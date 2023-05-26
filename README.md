@@ -8,19 +8,19 @@ Help information
 By cloning this repository you could add a validation library for such types of objects as Integer, String and Map.
 Create sample object of a Validator class, then use methods string(), number() or map() to choose which type of objects you want to validate.
 By adding validation checks, you can improve your validator, because all checks are saved during one session.
-For example:
-
-```Validator v = new Validator();`
-StringSchema schema = v.string();
-
-schema.required().minLength(5).contains("World").isValid("Hello, World!"); //true
-schema.isValid("What does the fox say?"); //false because the string has to contain substring "World" from previous check.```
-
 Also there is a scheme of a nested validation in MapSchema class, so you can validate map values with shape() method.
 For example:
 
 ```Validator v = new Validator();
+StringSchema schema = v.string();
+schema.required().minLength(5).contains("World").isValid("Hello, World!"); //true
+schema.isValid("What does the fox say?"); //false because the string has to contain substring "World" from previous check.
+
+//or for nested validation
+
+Validator v = new Validator();
 MapSchema schema = v.map();
+
 Map<String, BaseSchema> schemas = new HashMap<>();
 schemas.put("name", v.string().required());
 schemas.put("age", v.number().positive());
