@@ -8,13 +8,13 @@ public class MapSchema extends BaseSchema {
     public final MapSchema required() {
         Predicate<Object> req = (m) -> Map.class.isInstance(m)
                                     && Objects.nonNull(m);
-        addLimitation("required", req);
+        addValidation("required", req);
         return this;
     }
 
     public final MapSchema sizeof(int size) {
         Predicate<Map> sizeof = map -> map.size() == size;
-        addLimitation("sizeOf", sizeof);
+        addValidation("sizeOf", sizeof);
         return this;
     }
 
@@ -25,7 +25,7 @@ public class MapSchema extends BaseSchema {
                 return e.getValue().isValid(v);
             });
         };
-        addLimitation("shape", shape);
+        addValidation("shape", shape);
         return this;
     }
 }

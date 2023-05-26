@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public class NumberSchema extends BaseSchema {
     public final NumberSchema required() {
         Predicate<Integer> req = Objects::nonNull;
-        addLimitation("required", req);
+        addValidation("required", req);
         return this;
     }
 
@@ -14,7 +14,7 @@ public class NumberSchema extends BaseSchema {
         Predicate<Object> posit = (i) -> Integer.class.isInstance(i)
                 && ((int) i > 0)
                 || i == null;
-        addLimitation("positive", posit);
+        addValidation("positive", posit);
         return this;
     }
 
@@ -23,7 +23,7 @@ public class NumberSchema extends BaseSchema {
         Predicate<Integer> range = (i) -> Objects.nonNull(i)
                 && start <= i
                 && i <= end;
-        addLimitation("range", range);
+        addValidation("range", range);
         return this;
     }
 }

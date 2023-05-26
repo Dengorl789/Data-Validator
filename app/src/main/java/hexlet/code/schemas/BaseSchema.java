@@ -18,7 +18,7 @@ public abstract class BaseSchema {
         return true;
     }
 
-    public final void addLimitation(String name, Predicate predicate) {
+    public final void addValidation(String name, Predicate predicate) {
         this.validations.put(name, predicate);
     }
 }

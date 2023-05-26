@@ -44,7 +44,7 @@ public class StringSchemaTest {
     }
 
     @Test
-    public void testStringMinLrngth2() {
+    public void testStringMinLength2() {
         var actual = schema.required().minLength(6).isValid("Hi");
         var expected = false;
         Assertions.assertEquals(expected, actual);

@@ -7,21 +7,21 @@ public class StringSchema extends BaseSchema {
         Predicate<Object> req = (s) -> String.class.isInstance(s)
                 && Objects.nonNull(s)
                 && !"".equals(s);
-        addLimitation("required", req);
+        addValidation("required", req);
         return this;
     }
 
     public final StringSchema minLength(int minLength) {
         this.required();
         Predicate<String> min = (s) -> s.length() >= minLength;
-        addLimitation("minLength", min);
+        addValidation("minLength", min);
         return this;
     }
 
     public final StringSchema contains(String pattern) {
         this.required();
         Predicate<String> cont = (s) -> s.contains(pattern);
-        addLimitation("contains", cont);
+        addValidation("contains", cont);
         return this;
     }
 }
